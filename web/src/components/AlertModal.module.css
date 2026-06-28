@@ -1,0 +1,138 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(16, 18, 17, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+}
+
+.overlayActive {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.container {
+    background: var(--neutral-2);
+    border: 1px solid var(--neutral-4);
+    border-radius: 16px;
+    padding: 24px;
+    width: min(400px, 90%);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    transform: scale(0.9);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.overlayActive .container {
+    transform: scale(1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.iconSuccess {
+    background: var(--success-dark);
+    color: var(--success-base);
+}
+
+.iconWarning {
+    background: var(--warning-dark);
+    color: var(--warning-base);
+}
+
+.iconError {
+    background: var(--error-dark);
+    color: var(--error-base);
+}
+
+.title {
+    margin: 0;
+    font-size: var(--font-heading6);
+    font-weight: 600;
+    color: var(--neutral-12);
+}
+
+.message {
+    font-size: var(--font-body);
+    color: var(--neutral-11);
+    margin: 0 0 24px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: var(--font-body);
+    transition: all 0.2s;
+}
+
+.btnCancel {
+    background: var(--neutral-3);
+    color: var(--neutral-11);
+}
+
+.btnCancel:hover {
+    background: var(--neutral-4);
+    color: var(--neutral-12);
+}
+
+.btnConfirmSuccess {
+    background: var(--success-base);
+    color: var(--neutral-1);
+}
+
+.btnConfirmSuccess:hover {
+    background: var(--success-hover);
+}
+
+.btnConfirmWarning {
+    background: var(--warning-base);
+    color: var(--neutral-1);
+}
+
+.btnConfirmWarning:hover {
+    background: var(--warning-hover);
+}
+
+.btnConfirmError {
+    background: var(--error-base);
+    color: var(--neutral-13);
+}
+
+.btnConfirmError:hover {
+    background: var(--error-hover);
+}

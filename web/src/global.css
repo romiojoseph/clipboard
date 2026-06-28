@@ -1,0 +1,127 @@
+@import url(https://fonts.bunny.net/css?family=google-sans:400,400i,500,600|google-sans-code:400);
+
+:root {
+    /* Colors */
+
+    /* primary */
+    --primary-50: #f9faff;
+    --primary-60: #e5eafe;
+    --primary-150: #c5d0fd;
+    --primary-300: #93adfb;
+    --primary-450: #3b82f6;
+    --primary-500: #3a7ceb;
+    --primary-550: #366cca;
+    --primary-650: #2f5296;
+    --primary-800: #212f52;
+
+    /* primary semantic mappings */
+    --primary-light: var(--primary-150);
+    --primary-base: var(--primary-500);
+    --primary-hover: var(--primary-450);
+    --primary-accent: var(--primary-300);
+    --primary-dark: var(--primary-800);
+
+    /* neutral */
+    --neutral-0: #000000;
+    --neutral-1: #101211;
+    --neutral-2: #171918;
+    --neutral-3: #202221;
+    --neutral-4: #272a29;
+    --neutral-5: #2e3130;
+    --neutral-6: #373b39;
+    --neutral-7: #444947;
+    --neutral-8: #5b625f;
+    --neutral-9: #63706b;
+    --neutral-10: #717d79;
+    --neutral-11: #adb5b2;
+    --neutral-12: #eceeed;
+    --neutral-13: #ffffff;
+
+    /* semantic success (green) */
+    --success-light: #d1fae5;
+    --success-base: #10b981;
+    --success-hover: #059669;
+    --success-dark: #064e3b;
+
+    /* semantic warning (amber) */
+    --warning-light: #fef3c7;
+    --warning-base: #f59e0b;
+    --warning-hover: #d97706;
+    --warning-dark: #78350f;
+
+    /* semantic error/danger (red) */
+    --error-light: #fee2e2;
+    --error-base: #ef4444;
+    --error-hover: #dc2626;
+    --error-dark: #7f1d1d;
+
+    /* Typography */
+
+    --font-displayLarge: 45px;
+    --font-displayMedium: 40px;
+    --font-displaySmall: 36px;
+    --font-heading1: 32px;
+    --font-heading2: 28px;
+    --font-heading3: 25px;
+    --font-heading4: 22px;
+    --font-heading5: 20px;
+    --font-heading6: 18px;
+    --font-subtitle: 16px;
+    --font-body: 14px;
+    --font-caption: 12px;
+    --font-label: 11px;
+    --font-tagline: 10px;
+
+    --body: 'Google Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --code: 'Google Sans Code', monospace;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: var(--body);
+    background-color: var(--neutral-0);
+    color: var(--neutral-12);
+    -webkit-font-smoothing: antialiased;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+        "GRAD" 0;
+}
+
+code {
+    font-family: var(--code);
+}
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* Custom premium dark scrollbars */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--neutral-1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neutral-3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-4);
+}

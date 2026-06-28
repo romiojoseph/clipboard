@@ -1,0 +1,36 @@
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    outline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.label {
+    font-size: var(--font-caption);
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* Off state – greyed out */
+.off {
+    color: var(--neutral-10);
+}
+
+.off:hover {
+    color: var(--neutral-8);
+}
+
+/* On state – green */
+.on {
+    color: var(--success-base);
+}
+
+.on:hover {
+    color: var(--success-light);
+}

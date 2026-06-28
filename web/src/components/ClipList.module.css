@@ -1,0 +1,400 @@
+.list {
+    display: grid-lanes;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: var(--neutral-2);
+    border: 2px solid var(--neutral-3);
+    border-radius: 24px;
+    corner-shape: squircle;
+    transition: all 0.2s ease-out;
+}
+
+.card:hover {
+    border-color: var(--neutral-4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cardSelected {
+    border-color: var(--neutral-4);
+    background: var(--neutral-3);
+}
+
+.rowSelectBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-7);
+    transition: color 0.15s, transform 0.1s;
+    outline: 1px solid transparent;
+}
+
+.rowSelectBtn:hover {
+    color: var(--neutral-10);
+    transform: scale(1.05);
+}
+
+.rowSelectIconActive {
+    color: var(--primary-base);
+}
+
+.rowSelectIcon {
+    color: var(--neutral-6);
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    max-height: 256px;
+    overflow-y: auto;
+}
+
+.contentText {
+    margin: 0;
+    font-size: var(--font-subtitle);
+    color: var(--neutral-12);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.imagePreviewContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 350px;
+}
+
+.imagePreview {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--neutral-4);
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.imagePreview:hover {
+    transform: scale(1.01);
+    border-color: var(--primary-base);
+}
+
+.filePathLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-caption);
+    color: var(--neutral-8);
+}
+
+.date {
+    display: block;
+    font-size: var(--font-caption);
+    color: var(--neutral-10);
+    margin-top: 4px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    justify-content: flex-start;
+}
+
+
+.btnPin {
+    background: var(--neutral-3);
+    color: var(--neutral-11);
+    border: 1px solid var(--neutral-5);
+}
+
+.btnPin:hover {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+    border-color: var(--primary-accent);
+}
+
+.btnPinned {
+    background: var(--warning-dark);
+    color: var(--warning-base);
+    border: 1px solid var(--warning-base);
+}
+
+.btnPinned:hover {
+    background: var(--warning-hover);
+    color: var(--neutral-1);
+}
+
+.btnDelete {
+    background: var(--error-dark);
+    color: var(--error-base);
+    border: 1px solid var(--error-dark);
+}
+
+.btnDelete:hover {
+    background: var(--error-base);
+    color: var(--neutral-13);
+    border-color: var(--error-base);
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px;
+    text-align: center;
+    background: var(--neutral-2);
+    border: 1px dashed var(--neutral-4);
+    border-radius: 20px;
+}
+
+.emptyIcon {
+    color: var(--neutral-6);
+    margin-bottom: 16px;
+}
+
+.emptyState h3 {
+    margin: 0 0 8px;
+    font-size: var(--font-heading3);
+    color: var(--neutral-12);
+    font-weight: 600;
+}
+
+.emptyState p {
+    margin: 0;
+    font-size: var(--font-body);
+    color: var(--neutral-8);
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.tagBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: var(--neutral-4);
+    border: none;
+    border-radius: 9999px;
+    font-size: var(--font-caption);
+    font-weight: 500;
+    color: var(--neutral-11);
+}
+
+.removeTagBtn {
+    background: none;
+    border: none;
+    color: var(--neutral-10);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.removeTagBtn:hover {
+    color: var(--error-base);
+}
+
+.addTagButton {
+    background: none;
+    border: 1px dashed var(--neutral-6);
+    color: var(--neutral-10);
+    border-radius: 9999px;
+    padding: 4px 10px;
+    font-size: var(--font-tagline);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+}
+
+.addTagButton:hover {
+    background: var(--neutral-5);
+    color: var(--neutral-12);
+    border-color: var(--neutral-8);
+}
+
+.tagSelectorWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tagDropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 100;
+    background: var(--neutral-2);
+    border: 1px solid var(--neutral-5);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tagDropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    font-size: var(--font-caption);
+    color: var(--neutral-11);
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+.tagDropdownItem:hover {
+    background: var(--neutral-4);
+    color: var(--neutral-12);
+}
+
+.tagDropdownItemActive {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+}
+
+.tagDropdownItemActive:hover {
+    background: var(--primary-hover);
+    color: var(--neutral-13);
+}
+
+.tagCheckbox {
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    accent-color: var(--primary-base);
+}
+
+.imagePreviewContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+.imagePreview {
+    max-width: 400px;
+    max-height: 220px;
+    border-radius: 12px;
+    border: 1px solid var(--neutral-4);
+    object-fit: contain;
+    background: var(--neutral-1);
+    transition: transform 0.2s ease-out, border-color 0.2s;
+    cursor: pointer;
+}
+
+.imagePreview:hover {
+    transform: scale(1.015);
+    border-color: var(--primary-base);
+    box-shadow: 0 4px 20px rgba(58, 124, 235, 0.15);
+}
+
+.filePathLabel {
+    font-size: var(--font-caption);
+    color: var(--neutral-8);
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: monospace;
+}
+
+/* Code block with syntax highlighting */
+.codeBlock {
+    margin: 0;
+    overflow-x: auto;
+    max-height: 256px;
+    font-size: var(--font-body);
+    line-height: 1.6;
+    tab-size: 4;
+    cursor: pointer;
+}
+
+.codeBlock code {
+    font-family: var(--code);
+    white-space: pre;
+    word-break: normal;
+}
+
+/* Color swatch preview */
+.colorSwatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid var(--neutral-5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Inline Edit Form styles */
+.editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.editTextarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 24px;
+    corner-shape: squircle;
+    border: 1px solid var(--neutral-4);
+    background: var(--neutral-2);
+    color: var(--neutral-12);
+    font-size: var(--font-body);
+    font-family: inherit;
+    resize: vertical;
+    min-height: 210px;
+    line-height: 1.5;
+    transition: all 0.32s ease-in-out;
+    outline: 1px solid transparent;
+}
+
+.editTextarea:hover {
+    background: var(--neutral-3);
+    border-color: var(--neutral-5);
+}
+
+.editTextarea:focus {
+    outline: 1px solid var(--neutral-6);
+    border-color: var(--neutral-4);
+    background: var(--neutral-3);
+}
+
+.editActions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}

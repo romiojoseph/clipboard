@@ -1,0 +1,673 @@
+/* Core layout of the shell */
+.shell {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 220px 1fr 280px;
+    background: var(--neutral-0);
+    color: var(--neutral-12);
+    overflow: hidden;
+    width: 100vw;
+    max-width: 100%;
+}
+
+/* Center Area holding Clips List */
+.centerArea {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--neutral-1);
+}
+
+/* Left Sidebar: Logo + Tags Filter */
+.leftPanel {
+    background: var(--neutral-2);
+    border-right: 1px solid var(--neutral-3);
+    padding: 20px 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+
+
+.headerControl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+.panelSectionTitle {
+    font-size: var(--font-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--neutral-7);
+    font-weight: 700;
+    margin-bottom: 4px;
+    padding-left: 12px;
+}
+
+.tagFilterList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+.tagFilterBtn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 9px 12px;
+    background: none;
+    border: none;
+    border-radius: 24px;
+    corner-shape: squircle;
+    color: var(--neutral-10);
+    font-size: var(--font-body);
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.32s ease-in-out;
+    gap: 8px;
+    text-align: left;
+    user-select: none;
+}
+
+.tagFilterBtn:hover {
+    background: var(--neutral-3);
+    color: var(--neutral-12);
+}
+
+.tagFilterBtnActive {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+    font-weight: 600;
+}
+
+.tagFilterBtnActive:hover {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+}
+
+.tagFilterCount {
+    margin-left: auto;
+    font-size: var(--font-tagline);
+    font-weight: 700;
+    background: var(--neutral-4);
+    color: var(--neutral-10);
+    padding: 2px 7px;
+    border-radius: 9999px;
+    line-height: 1.4;
+    transition: all 0.32s ease-in-out;
+    flex-shrink: 0;
+}
+
+.tagFilterBtnActive .tagFilterCount {
+    background: var(--primary-base);
+    color: var(--neutral-13);
+}
+
+/* Center Content: Scrollable Clips List with matching padding */
+.centerPanel {
+    background: var(--neutral-1);
+    padding: 16px;
+    /* Generous horizontal padding to align with header */
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Right Sidebar: Stacked Controls starting from top */
+.rightPanel {
+    background: var(--neutral-2);
+    border-left: 1px solid var(--neutral-3);
+    padding: 20px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Scrollable content area above the pinned shutdown button */
+.rightPanelScroll {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 4px;
+}
+
+.rightPanelGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Add Clip + Clear in one row */
+.topActionsRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Add Clip button — takes remaining space */
+.addClipBtn {
+    flex: 1;
+}
+
+/* Clear — icon-only square, matches outline button style */
+.clearBtn {
+    padding: 10px;
+}
+
+/* Divider between top actions row and Search */
+.panelDivider {
+    height: 1px;
+    background: var(--neutral-3);
+    margin: 4px 0;
+    flex-shrink: 0;
+}
+
+/* Shutdown — pinned to bottom, full width */
+.shutdownBtn {
+    width: 100%;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.sortTriggerBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid var(--neutral-4);
+    color: var(--neutral-11);
+    border-radius: 24px;
+    corner-shape: squircle;
+    font-size: var(--font-body);
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.32s ease-in-out;
+}
+
+.sortTriggerBtn:hover {
+    background: var(--neutral-3);
+    color: var(--neutral-12);
+    border-color: var(--neutral-5);
+}
+
+.clearBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Selection Manager Container & Buttons */
+.selectionManagerBox {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.selectAllBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--neutral-10);
+    font-size: var(--font-body);
+    font-family: inherit;
+    font-weight: 600;
+    transition: color 0.32s ease-in-out;
+    width: 100%;
+    padding: 0;
+}
+
+.selectAllBtn:hover {
+    color: var(--neutral-12);
+}
+
+.selectIcon {
+    color: var(--primary-base);
+}
+
+.selectionActionsStack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.selectionActionBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: var(--neutral-4);
+    border: 1px solid var(--neutral-5);
+    border-radius: 16px;
+    corner-shape: squircle;
+    color: var(--neutral-12);
+    font-size: var(--font-body);
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.32s ease-in-out;
+    width: 100%;
+}
+
+.selectionActionBtn:hover:not(:disabled) {
+    background: var(--neutral-6);
+    color: var(--neutral-13);
+    border-color: var(--neutral-7);
+}
+
+.selectionActionBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.selectionActionBtnDanger:hover:not(:disabled) {
+    background: var(--error-dark);
+    color: var(--error-light);
+    border-color: var(--error-base);
+}
+
+/* Custom Dropdown Overlays and Menus inside Sidebars */
+.dropdownWrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.dropdownOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    cursor: default;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: var(--neutral-2);
+    border: 1px solid var(--neutral-4);
+    border-radius: 16px;
+    corner-shape: squircle;
+    padding: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    animation: fadeInScale 0.15s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.dropdownItem {
+    padding: 9px 12px;
+    background: none;
+    border: none;
+    border-radius: 12px;
+    color: var(--neutral-10);
+    font-size: var(--font-body);
+    font-family: inherit;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.32s ease-in-out;
+    width: 100%;
+}
+
+.dropdownItem:hover {
+    background: var(--neutral-3);
+    color: var(--neutral-12);
+}
+
+.dropdownItemActive {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+}
+
+.dropdownItemActive:hover {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+}
+
+/* Bulk Tag Dropdown inside Right Panel */
+.bulkTagWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.bulkTagDropdownMenu {
+    position: fixed;
+    width: 260px;
+    z-index: 100000;
+    background: var(--neutral-2);
+    border: 1px solid var(--neutral-4);
+    border-radius: 16px;
+    corner-shape: squircle;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+    padding: 6px;
+    max-height: 320px;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInScale 0.15s ease-out;
+}
+
+.bulkTagDropdownList {
+    overflow-y: auto;
+    max-height: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-bottom: 6px;
+}
+
+.bulkTagDropdownFooter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-top: 1px solid var(--neutral-3);
+    padding-top: 8px;
+    margin-top: 4px;
+}
+
+.bulkTagFooterBtnOk,
+.bulkTagFooterBtnCancel {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 12px;
+    corner-shape: squircle;
+    font-size: var(--font-caption);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease-in-out;
+}
+
+.bulkTagFooterBtnOk {
+    background: var(--primary-base);
+    color: var(--neutral-13);
+    border: none;
+}
+
+.bulkTagFooterBtnOk:hover {
+    background: var(--primary-hover);
+}
+
+.bulkTagFooterBtnCancel {
+    background: transparent;
+    color: var(--neutral-10);
+    border: 1px solid var(--neutral-4);
+}
+
+.bulkTagFooterBtnCancel:hover {
+    background: var(--neutral-3);
+    color: var(--neutral-12);
+}
+
+/* Scrollbar styling for bulk tag dropdown */
+.bulkTagDropdownList::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bulkTagDropdownList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.bulkTagDropdownList::-webkit-scrollbar-thumb {
+    background: var(--neutral-5);
+    border-radius: 9999px;
+}
+
+.bulkTagDropdownList::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-6);
+}
+
+.bulkTagDropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    font-size: var(--font-body);
+    font-family: inherit;
+    color: var(--neutral-10);
+    cursor: pointer;
+    border-radius: 12px;
+    user-select: none;
+    transition: all 0.32s ease-in-out;
+}
+
+.bulkTagDropdownItem:hover {
+    background: var(--neutral-3);
+    color: var(--neutral-12);
+}
+
+.bulkTagDropdownItemActive {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+}
+
+.bulkTagDropdownItemActive:hover {
+    background: var(--primary-dark);
+    color: var(--primary-accent);
+}
+
+.bulkTagCountBadge {
+    font-size: var(--font-tagline);
+    font-weight: 700;
+    background: var(--neutral-4);
+    color: var(--neutral-10);
+    padding: 2px 6px;
+    border-radius: 9999px;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.tagSelectIconActive {
+    color: var(--primary-base);
+}
+
+.tagSelectIcon {
+    color: var(--neutral-6);
+}
+
+/* Alerts and status bars */
+.status,
+.error {
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: var(--font-body);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.error {
+    background: var(--error-dark);
+    color: var(--error-base);
+    border: 1px solid var(--error-base);
+}
+
+.status {
+    background: var(--neutral-2);
+    color: var(--primary-accent);
+    border: 1px solid var(--primary-dark);
+}
+
+/* Custom Modal Styles */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(500px, 90%);
+    background: var(--neutral-2);
+    border: 1px solid var(--neutral-4);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: scaleUp 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--neutral-3);
+}
+
+.modalHeader h2 {
+    margin: 0;
+    font-size: var(--font-heading5);
+    color: var(--neutral-12);
+    font-weight: 600;
+}
+
+.modalCloseBtn {
+    background: none;
+    border: none;
+    color: var(--neutral-8);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.15s;
+}
+
+.modalCloseBtn:hover {
+    color: var(--neutral-12);
+}
+
+.modalBody {
+    padding: 20px;
+}
+
+/* Screen Size Warning Overlay */
+.sizeWarningOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--neutral-1);
+    z-index: 99999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.warningIcon {
+    color: var(--error-base);
+    margin-bottom: 24px;
+    animation: pulseIcon 2s infinite ease-in-out;
+}
+
+.warningHeading {
+    font-size: var(--font-heading3);
+    color: var(--neutral-12);
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    font-family: inherit;
+}
+
+.warningSubtitle {
+    font-size: var(--font-body);
+    color: var(--neutral-8);
+    max-width: 400px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@keyframes pulseIcon {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+}
+
+/* Below the 768px breakpoint, activate overlay and hide main UI controls */
+@media (max-width: 1023px) {
+    .sizeWarningOverlay {
+        display: flex;
+    }
+}

@@ -1,0 +1,37 @@
+# Database
+clipboard.db
+*.db
+*.db-journal
+*.db-wal
+
+# Frontend
+web/node_modules/
+web/dist/
+web/dist-ssr/
+web/*.local
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+web/.eslintcache
+
+# OS / IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*~
+
+# Rust build artifacts
+target/
+target_build/
+**/*.rs.bk
+*.pdb
+
+# Rust binary output
+bin/
