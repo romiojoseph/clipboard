@@ -96,3 +96,5 @@ This is a small, portable app. Opening it will create a `clipboard.db` file in t
 *Run `cargo clean` to clean up the target/ directory*
 
 *This app loads fonts via Bunny Fonts*
+
+*Binary is compressed with [UPX](https://github.com/upx/upx/releases/tag/v5.2.0).*
